@@ -74,3 +74,15 @@ A branch develop é onde nos desenvolvedores trabalhamos, é nela onde ocorre a 
 
 A branch staging é quando desenvolvemos algo novo na aplicação e precisamos de uma validação afim de atestar se não irá quebrar ou implantar algum bug na aplicação. Se tudo estiver certo, essa alteração será enviada para a branch master/main.
 
+## Questões teóricas
+Crie nesse repositório um arquivo que vai se chamar `calculadora.js`, abra esse arquivo em seu editor de códigos favoritos e adicione o seguinte código:
+
+~~~javascript
+const args = process.argv.slice(2);
+console.log(parseInt(args[0]) + parseInt(args[1]));
+~~~
+
+Descubra o que esse código faz através de pesquisas na internet, também
+descubra como executar um código em javascript e dado que o nome do nosso arquivo é calculadora.js e você entendeu o que o código faz, escreva abaixo como executar esse código em seu terminal:
+
+Resposta: A propriedade process.argv é uma interface de programação de aplicativo embutida do módulo de processo que é usada para obter os argumentos passados para o processo node.js quando executado na linha de comando. O primeiro elemento do array `process.argv[0]` nos fornece o diretório do interpretador do javascript (que neste caso é o nodejs). O segundo elemento do array `process.argv[1]` é o diretório do código que esta sendo executado. Os demais parâmetros passados corresponderam aos próximos elementos elementos do array, como por exemplo, se executarmos `node calculadora.js 10 5`. O método `slice` "fatia" os 2 primeiros elementos do array, ou seja, `args[0]='10'` e `args[0]='5'`, como está sendo utilizado o `parseInt` as strings de `args` são convertidas para inteiro e com isso temos o resultado 15 em nosso console. Já se executarmos `node calculadora.js a b` não é possivel converter `a` e `b` para inteiro, logo a saída será `NaN`.
