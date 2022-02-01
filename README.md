@@ -81,7 +81,7 @@ A branch develop é onde nos desenvolvedores trabalhamos, é nela onde ocorre a 
 
 A branch staging é quando desenvolvemos algo novo na aplicação e precisamos de uma validação afim de atestar se não irá quebrar ou implantar algum bug na aplicação. Se tudo estiver certo, essa alteração será enviada para a branch master/main.
 
-## Questões teóricas
+## Questões prática
 ### 3 - Crie nesse repositório um arquivo que vai se chamar `calculadora.js`, abra esse arquivo em seu editor de códigos favoritos e adicione o seguinte código:
 
 ~~~javascript
@@ -165,3 +165,24 @@ No código possuí 3 linhas erradas:
 ### 8 - Agora que a sua divisão está funcionando e você garantiu que não afetou as outras funções, você está apto a fazer um merge request Em seu gitlab, descubra como realizá-lo de acordo com o gitflow.
 
 Nesta fase precisamos aceitar o `pull request` no github de nosso projeto, após a revisão basta adicionar o merge e a nova alteração será salva na main branch.
+
+### 9 - João quis se redimir dos pecados e fez uma melhoria em seu código, mas ainda assim, continuou fazendo um push na master, faça a seguinte alteração no código e fez o commit com a mensagem: **"refactor: calculator abstraction"**
+
+~~~javascript
+var x = args[0];
+var y = args[2];
+var operator = args[1];
+
+function evaluate(param1, param2, operator) {
+  return eval(param1 + operator + param2);
+}
+
+if ( console.log( evaluate(x, y, operator) ) ) {}
+
+~~~
+### Para piorar a situação, joão não te contou como executar esse novo código, enquanto você não descobre como executá-lo lendo o código, e seu chefe não descobriu que tudo está comprometido, faça um revert através do seu gitlab para que o produto volte ao normal o quanto antes!
+
+Executando o comando `git revert HEAD~1` retornamos ao ponto da historia em que a aplicação estava funcionando
+
+
+
