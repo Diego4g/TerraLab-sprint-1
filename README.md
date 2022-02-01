@@ -184,5 +184,7 @@ if ( console.log( evaluate(x, y, operator) ) ) {}
 
 Executando o comando `git revert HEAD~1` retornamos ao ponto da historia em que a aplicação estava funcionando
 
+### 10 - Descubra como executar esse novo código e que operações ele é capaz de realizar. Deixe sua resposta aqui, e explique o que essas funções javascript fazem. 
 
+A função `eval()` interpreta seus parâmetros como expressões matemáticas, ou seja, mesmo que inserirmos '1' '+' '1', ele entende que isso não se trata de uma string, e sim uma expressão matemática, retornando como resultado 2.
 

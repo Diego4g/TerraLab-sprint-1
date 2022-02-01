@@ -1,0 +1,8 @@
+{
+  "name": "TerraLab-sprint-1",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:Diego4g/TerraLab-sprint-1.git",
+  "author": "Diego Ferreira <diegodejesusferreira2@gmail.com>",
+  "license": "MIT"
+}
