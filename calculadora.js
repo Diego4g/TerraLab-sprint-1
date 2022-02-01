@@ -1,9 +1,30 @@
-var x = args[0];
-var y = args[2];
-var operator = args[1];
+const soma = () => {
+    console.log(parseInt(args[1]) + parseInt(args[2]));
+};
 
-function evaluate(param1, param2, operator) {
-  return eval(param1 + operator + param2);
+const sub = () => {
+    console.log(parseInt(args[1]) - parseInt(args[2]));  
 }
 
-if ( console.log( evaluate(x, y, operator) ) ) {}
+const div = () => {
+    console.log(parseInt(args[1]) / parseInt(args[2]));  
+}
+
+const args = process.argv.slice(2);
+
+switch (args[0]) {
+    case 'soma':
+        soma();
+    break;
+
+    case 'sub':
+        sub();
+    break;
+
+    case 'div':
+        div();
+    break;
+
+    default:
+        console.log('does not support', args[0]);
+}
