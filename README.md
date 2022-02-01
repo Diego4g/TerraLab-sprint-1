@@ -28,7 +28,7 @@ Ação de juntar os commits de dois branches.
 * unmodified – Arquivos não modificados desde o último commit;
 * modified – Arquivos modificados desde o último commit; 
 * staged – Arquivos preparados para comitar.
->Uma extensão interessante no VsCode é o *gitLens*, ela nos em várias questões sobre o git, inclusive a marcação em qual estado se encontra nossos arquivos.
+>Uma extensão interessante no VsCode é o *gitLens*, ela nos informa várias questões sobre o git, inclusive a marcação em qual estado se encontra nossos arquivos.
 
 ### Explique o comando git init.
 Inicia a ferramenta do git criando uma pasta chamada `.git` na raiz do projeto.
@@ -50,6 +50,10 @@ O comando `git checkout <branch>` move o ponteiro *Head* para o novo ramo chamad
 
 ### Explique o comando git reset e suas três opções.
 O comando `git reset <hash>` retorna para o commit de `id = <hash>`. Ele possui 3 flags importantes: A opção `git reset --soft <hash>`, move o HEAD para o commit indicado, mas mantém o staging e o working directory inalterados. A opção `git reset --mixed <hash>`, move o HEAD para o commit indicado, altera o staging e mantém o working directory. A opção `git reset --hard <hash>` faz com que o HEAD aponte para algum commit anterior, mas também altera a staging area e o working directory para o estado do commit indicado, ou seja, todas as alterações realizadas após o commit ao qual retornamos serão perdidas. Isso não é recomendável se as alterações já tiverem sido enviadas para o repositório remoto. Nesse caso devemos utilizar o git revert.
+Outra forma de utilizar o comando git reset, é indicando quantos commits queremos retornar o HEAD, fazemos isso com o comando git reset HEAD~n. O parâmetro HEAD~n, nos indica que queremos posicionar o HEAD para n commits atrás. Por exemplo, para retornar para o commit anterior usamos HEAD~1.
+
+### Explique o comando git revert.
+`git revert <hash>` cria um novo commit com as alterações do commit com a `hash` indicada.
 
 ### Explique o comando git clone.
 O comando `git clone <ssh | https >` cria uma copia do repositório com a `ssh | https` em questão para o diretorio atual.
