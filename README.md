@@ -82,7 +82,69 @@ const args = process.argv.slice(2);
 console.log(parseInt(args[0]) + parseInt(args[1]));
 ~~~
 
-Descubra o que esse código faz através de pesquisas na internet, também
-descubra como executar um código em javascript e dado que o nome do nosso arquivo é calculadora.js e você entendeu o que o código faz, escreva abaixo como executar esse código em seu terminal:
+### Descubra o que esse código faz através de pesquisas na internet, também descubra como executar um código em javascript e dado que o nome do nosso arquivo é calculadora.js e você entendeu o que o código faz, escreva abaixo como executar esse código em seu terminal:
 
-Resposta: A propriedade process.argv é uma interface de programação de aplicativo embutida do módulo de processo que é usada para obter os argumentos passados para o processo node.js quando executado na linha de comando. O primeiro elemento do array `process.argv[0]` nos fornece o diretório do interpretador do javascript (que neste caso é o nodejs). O segundo elemento do array `process.argv[1]` é o diretório do código que esta sendo executado. Os demais parâmetros passados corresponderam aos próximos elementos elementos do array, como por exemplo, se executarmos `node calculadora.js 10 5`. O método `slice` "fatia" os 2 primeiros elementos do array, ou seja, `args[0]='10'` e `args[0]='5'`, como está sendo utilizado o `parseInt` as strings de `args` são convertidas para inteiro e com isso temos o resultado 15 em nosso console. Já se executarmos `node calculadora.js a b` não é possivel converter `a` e `b` para inteiro, logo a saída será `NaN`.
+Resposta: A propriedade `process.argv` é uma interface de programação de aplicativo embutida do módulo de processo que é usada para obter os argumentos passados para o processo node.js quando executado na linha de comando. O primeiro elemento do array `process.argv[0]` nos fornece o diretório do interpretador do javascript (que neste caso é o nodejs). O segundo elemento do array `process.argv[1]` é o diretório do código que esta sendo executado. Os demais parâmetros passados corresponderam aos próximos elementos elementos do array, como por exemplo, se executarmos `node calculadora.js 10 5`. O método `slice` "fatia" os 2 primeiros elementos do array, ou seja, `args[0]='10'` e `args[0]='5'`, como está sendo utilizado o `parseInt` as strings de `args` são convertidas para inteiro e com isso temos o resultado 15 em nosso console. Já se executarmos `node calculadora.js a b` não é possivel converter `a` e `b` para inteiro, logo a saída será `NaN`.
+
+### 4 - Agora que você já tem um código feito e a resposta aqui, você precisa subir isso para seu repositório. Sem usar git add . descubra como adicionar apenas um arquivo ao seu histórico de commit e adicione calculadora.js a ele. Que tipo de commit esse código deve ter de acordo ao conventional commit. Que tipo de commit o seu README.md deve contar de acordo ao conventional commit. Por fim, faça um push desse commit.
+
+- **chore:**: Atualização de tarefas que não ocasionam alteração no código de produção, mas mudanças de ferramentas, mudanças de configuração e bibliotecas.
+- **feat:**: São adições de novas funcionalidades ou de quaisquer outras novas implantações ao código.
+- **fix:**: Essencialmente definem o tratamento de correções de bugs.
+- **refactor:**: Utilizado em quaisquer mudanças que sejam executados no código, porém não alterem a funcionalidade final da tarefa impactada.
+- **docs:**: Inclusão ou alteração somente de arquivos de documentação.
+- **perf:**: Uma alteração de código que melhora o desempenho.
+- **style:**: Alterações referentes a formatações na apresentação do código que não afetam o significado do código, como por exemplo: espaço em branco, formatação, ponto e vírgula ausente etc.
+- **test:**: Adicionando testes ausentes ou corrigindo testes existentes nos processos de testes automatizados (TDD).
+- **build:**: Alterações que afetam o sistema de construção ou dependências externas (escopos de exemplo: gulp, broccoli, npm).
+- **ci:**: Mudanças em nossos arquivos e scripts de configuração de CI (exemplo de escopos: Travis, Circle, BrowserStack, SauceLabs).
+- **env:**: Utilizado na descrição de modificações ou adições em arquivos de configuração em processos e métodos de integração contínua (CI), como parâmetros em arquivos de configuração de containers.
+
+### 5 - Copie e cole o código abaixo em sua calculadora.js:
+
+~~~javascript
+const soma = () => {
+    console.log(parseInt(args[0]) + parseInt(args[1]));
+};
+
+const args = process.argv.slice(2);
+
+soma();
+~~~
+### Descubra o que essa mudança representa em relação ao conventional commit e faça o devido commit dessa mudança. 
+
+Com esta alteração podemos perceber 2 coisas bem interessantes no javascript. A primeira é a declaração de uma `arrow function anonima`. Anonima pois ela não tem nome, e `arrow function` pois é uma sintaxe abreviada de se declarar uma função no javascript. O segundo ponto é a questão do `hosting`(elevação), isto ocorre pois dentro da função que foi declarada, ela utiliza uma variável que só "existe" depois da declaração da função, porem o javascript utiliza do efeito `hosting` fazendo com que a váriavel `args` seja elevada para antes da declaração da função.
+
+### 6 - João entrou em seu repositório e o deixou da seguinte maneira:
+
+~~~javascript
+const soma = () => {
+    console.log(parseInt(args[0]) + parseInt(args[1]));
+};
+
+const sub = () => {
+    console.log(parseInt(args[0]) - parseInt(args[1]));  
+}
+
+const args = process.argv.slice(2);
+
+switch (args[0]) {
+    case 'soma':
+        soma();
+    break;
+
+    case 'sub':
+        sub();
+    break;
+
+    default:
+        console.log('does not support', arg[0]);
+}
+~~~
+
+### Depois disso, realizou um git add . e um commit com a mensagem: "Feature: added subtraction" faça como ele e descubra como executar o seu novo código. Nesse código, temos um pequeno erro, encontre-o e corrija para que a soma e divisão funcionem. Por fim, commit sua mudança. 
+
+No código possuí 3 linhas erradas:
+
+- Na função `soma` foi declarada da seguinte forma: `console.log(parseInt(args[0]) + parseInt(args[1])); ` e deveria ser `console.log(parseInt(args[1]) + parseInt(args[2]));`. O mesmo acontece para a função `sub`.
+- Na linha `console.log('does not support', arg[0]); `deveria ser console.log('does not support', args[0]);
