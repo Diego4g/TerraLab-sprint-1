@@ -49,8 +49,15 @@ Este comando nos permite visualizar o histórico de commits ao longo do projeto,
 O comando `git checkout <branch>` move o ponteiro *Head* para o novo ramo chamado `<branch>`, mas neste caso precisamos que o ramo `<branch>` ja esteja criado. Adicionando a flag **-b** a `<branch>` é criada e o ponteiro é movido.
 
 ### 15 - Explique o comando git reset e suas três opções.
-O comando `git reset <hash>` retorna para o commit de `id = <hash>`. Ele possui 3 flags importantes: A opção `git reset --soft <hash>`, move o HEAD para o commit indicado, mas mantém o staging e o working directory inalterados. A opção `git reset --mixed <hash>`, move o HEAD para o commit indicado, altera o staging e mantém o working directory. A opção `git reset --hard <hash>` faz com que o HEAD aponte para algum commit anterior, mas também altera a staging area e o working directory para o estado do commit indicado, ou seja, todas as alterações realizadas após o commit ao qual retornamos serão perdidas. Isso não é recomendável se as alterações já tiverem sido enviadas para o repositório remoto. Nesse caso devemos utilizar o git revert.
-Outra forma de utilizar o comando git reset, é indicando quantos commits queremos retornar o HEAD, fazemos isso com o comando git reset HEAD~n. O parâmetro HEAD~n, nos indica que queremos posicionar o HEAD para n commits atrás. Por exemplo, para retornar para o commit anterior usamos HEAD~1.
+O comando `git reset <hash>` retorna para o commit de `id = <hash>`. Ele possui 3 flags importantes: 
+
+A opção `git reset --soft <hash>`, move o HEAD para o commit indicado, mas mantém o staging e o working directory inalterados. 
+
+A opção `git reset --mixed <hash>`, move o HEAD para o commit indicado, altera o staging e mantém o working directory. 
+
+A opção `git reset --hard <hash>` faz com que o HEAD aponte para algum commit anterior, mas também altera a staging area e o working directory para o estado do commit indicado, ou seja, todas as alterações realizadas após o commit ao qual retornamos serão perdidas. Isso não é recomendável se as alterações já tiverem sido enviadas para o repositório remoto. Nesse caso devemos utilizar o git revert.
+
+Outra forma de utilizar o comando git reset, é indicando quantos commits queremos retornar o HEAD, fazemos isso com o comando git reset `HEAD~n`. O parâmetro `HEAD~n`, nos indica que queremos posicionar o HEAD para n commits atrás. Por exemplo, para retornar para o commit anterior usamos HEAD~1.
 
 ### 16 - Explique o comando git revert.
 `git revert <hash>` cria um novo commit com as alterações do commit com a `hash` indicada.
@@ -147,4 +154,14 @@ switch (args[0]) {
 No código possuí 3 linhas erradas:
 
 - Na função `soma` foi declarada da seguinte forma: `console.log(parseInt(args[0]) + parseInt(args[1])); ` e deveria ser `console.log(parseInt(args[1]) + parseInt(args[2]));`. O mesmo acontece para a função `sub`.
-- Na linha `console.log('does not support', arg[0]); `deveria ser console.log('does not support', args[0]);
+- Na linha `console.log('does not support', arg[0])`; deveria ser `console.log('does not support', args[0]);`
+
+### 7 - Por causa de joãozinho, você foi obrigado a fazer correções na sua branch principal! O produto foi pro saco e a empresa perdeu muito dinheiro porque não conseguiu fazer as suas contas, graças a isso o seu chefe ficou bem bravo e mandou você dar um jeito disso nunca acontecer. Aprenda a criar uma branch, e desenvolva a feature de divisão nessa branch. 
+
+- `git checkout -b staging` : criando e movendo o HEAD para a branch `staging` 
+- `git branch -M staging` : preparando o push para a branch staging
+- `git push`: enviando alterações para o repositório remoto
+
+### 8 - Agora que a sua divisão está funcionando e você garantiu que não afetou as outras funções, você está apto a fazer um merge request Em seu gitlab, descubra como realizá-lo de acordo com o gitflow.
+
+Nesta fase precisamos aceitar o `pull request` no github de nosso projeto, após a revisão basta adicionar o merge e a nova alteração será salva na main branch.
